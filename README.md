@@ -25,3 +25,29 @@ $ ./centrify-credential-retriever
   -user string
         Authorized user to login to tenant. Required if auth = unpw. Optional if auth = oauth
 ```
+
+### Examples
+
+To retrieve password for a vaulted account named "account1" in system named "system1" using DMC authentication:
+
+```sh
+./centrify-credential-retriever -url https://tenantid.my.centrify.net -scope <yourscope> -credpath system/system1/account1
+```
+
+To retrieve password for a vaulted account named "account2" in database named "mydb" using Oauth2 authentication:
+
+```sh
+./centrify-credential-retriever -url https://tenantid.my.centrify.net -auth oauth -appid <yourappid> -scope <yourscope> -username <yourusername> -password <yourpassword> -credpath database/mydb/account2
+```
+
+To retrieve secret text for a secret named "testsecret" in folder "folder1/folder2" using oauth2 token authentication:
+
+```sh
+./centrify-credential-retriever -url https://tenantid.my.centrify.net -auth oauth -token <yourtoken> -credpath -credpath secret/folder1\\folder2/testsecret
+```
+
+To retrieve secret text for a secret named "testsecret" in folder "folder1" using username and password authentication:
+
+```sh
+./centrify-credential-retriever -url https://tenantid.my.centrify.net -auth unpw -user <yourusername> -credpath -credpath secret/folder1/testsecret
+```
